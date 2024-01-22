@@ -9,19 +9,19 @@ number:
 date:
 consensus: true
 v: 3
-area: art
-workgroup: dispatch
+# area: art
+# workgroup: dispatch
 keyword:
  - json
  - text
  - scripting
 venue:
-  group: dispatch
-  type: Working Group
-  mail: dispatch@ietf.org
-  arch: https://datatracker.ietf.org/wg/dispatch/
-  github: https://github.com/hildjj/draft-hildebrand-rfc2397bis
-  latest: https://hildjj.github.io/draft-hildebrand-rfc2397bis/
+#  group: dispatch
+#  type: Working Group
+#  mail: dispatch@ietf.org
+#  arch: https://datatracker.ietf.org/wg/dispatch/
+  github: "hildjj/draft-hildebrand-eson-requirements"
+  latest: "https://hildjj.github.io/draft-hildebrand-eson-requirements/draft-hildebrand-eson-requirements.html"
 
 author:
  -
