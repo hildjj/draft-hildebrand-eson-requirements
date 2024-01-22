@@ -3,7 +3,7 @@ title: Extended Scripting Object Notation (ESON) Requirements
 abbrev: ESON Requirements
 category: std
 
-docname: draft-hildebrand-eson-requirements-latest
+docname: draft-hildebrand-eson-requirements
 submissiontype: IETF
 number:
 date:
