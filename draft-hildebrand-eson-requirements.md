@@ -111,6 +111,9 @@ and adding data types that would be useful for interchange.
    If there is a type extensibility approach, the date type SHALL use it.
 1. The SHALL be a base64 type that allows explicit interchange of binary data.
    If there is a type extensibility approach, the base64 type SHALL use it.
+1. Numbers MAY be written with a single underscore (U+005F: "_") between any
+   numeric digits.  This is usually used to add clarity to long numeric
+   constants.  Example: `86_400`
 
 # Security Considerations
 
