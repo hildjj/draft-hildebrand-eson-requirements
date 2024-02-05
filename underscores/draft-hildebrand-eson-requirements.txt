@@ -1,0 +1,225 @@
+
+
+
+
+Network Working Group                                      J. Hildebrand
+Internet-Draft                                 Fractional CTO Associates
+Intended status: Standards Track                         5 February 2024
+Expires: 8 August 2024
+
+
+         Extended Scripting Object Notation (ESON) Requirements
+               draft-hildebrand-eson-requirements-latest
+
+Abstract
+
+   Requirements for a new data interchange format as extensions to JSON,
+   ensuring that all existing I-JSON would be valid ESON, adding
+   features for usability.
+
+About This Document
+
+   This note is to be removed before publishing as an RFC.
+
+   The latest revision of this draft can be found at
+   https://hildjj.github.io/draft-hildebrand-eson-requirements/draft-
+   hildebrand-eson-requirements.html.  Status information for this
+   document may be found at https://datatracker.ietf.org/doc/draft-
+   hildebrand-eson-requirements/.
+
+   Source for this draft and an issue tracker can be found at
+   https://github.com/hildjj/draft-hildebrand-eson-requirements.
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on 8 August 2024.
+
+Copyright Notice
+
+   Copyright (c) 2024 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents (https://trustee.ietf.org/
+   license-info) in effect on the date of publication of this document.
+   Please review these documents carefully, as they describe your rights
+   and restrictions with respect to this document.  Code Components
+   extracted from this document must include Revised BSD License text as
+   described in Section 4.e of the Trust Legal Provisions and are
+   provided without warranty as described in the Revised BSD License.
+
+Table of Contents
+
+   1.  Introduction
+   2.  Conventions and Definitions
+   3.  Requirements
+   4.  Security Considerations
+   5.  IANA Considerations
+   6.  References
+     6.1.  Normative References
+     6.2.  Informative References
+   Acknowledgments
+   Author's Address
+
+1.  Introduction
+
+   JSON [RFC8259] was originally designed as a format for interchanging
+   a simplified subset of the JavaScript language between different
+   endpoints.  It has since come to be used in many places that were not
+   originally targeted in the original design.  JavaScript (now
+   ECMAScript) is far from the only language that is using JSON, and we
+   no longer parse JSON by throwing it at a generic JavaScript runtime
+   using eval.
+
+   ESON aspires to be a language-neutral, text-based format that
+   fulfills similar missions as JSON has, while adding better definition
+   for the edge cases that have surfaced from years of JSON use,
+   allowing enhanced developer ergonomics, and adding data types that
+   would be useful for interchange.
+
+2.  Conventions and Definitions
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+   "OPTIONAL" in this document are to be interpreted as described in
+   BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
+   capitals, as shown here.
+
+3.  Requirements
+
+   1.   All existing I-JSON ([RFC7493]) documents SHALL be valid ESON.
+
+   2.   All minor errors in parsing ESON, including ranges for numbers,
+        SHALL cause a parse error.
+
+   3.   ESON is always encoded as UTF-8 for interchange.  Note that this
+        explicitly means that bare code points in the surrogate range
+        (D800-DFFF) MUST cause an error when encountered at any point in
+        the input, even when escaped.
+
+   4.   ESON SHALL have a comment syntax that is valid at any point
+        before or after any token.  Both single- and multi-line comments
+        in the style of ECMAScript and C are envisioned.
+
+   5.   Object keys MAY be unquoted Identifiers in the form
+        /\p{ID_Start}\p{ID_Continue}*/u.
+
+   6.   Commas MAY be skipped between array or object items as long as
+        there is whitespace between the items, and MAY occur after the
+        last array or object item.
+
+   7.   Strings MAY use either single quotes or double quotes.  Double
+        quotes need not be escaped inside single quotes, and vice-versa
+        (as is currently the case in JSON).
+
+   8.   Strings MAY span multiple lines by including newline characters.
+        These newline characters are a part of the encoded information.
+
+   9.   Strings MAY include Unicode escapes for any code point (e.g.
+        "\u{1F4A9}").
+
+   10.  A number space that includes at least all 64-bit signed or
+        unsigned integers SHALL be defined.  An arbitrary-length number
+        space MAY be defined.  These spaces might be continuous or not,
+        but the semantics of the interactions and overlaps between them
+        SHALL be specified.
+
+   11.  Numbers MAY be encoded in hexadecimal with the 0x prefix.
+
+   12.  Numbers MAY have a leading or trailing decimal point.  The
+        semantics for a trailing decimal point SHALL be explicitly
+        defined.
+
+   13.  The numbers Infinity, -Infinity, and NaN SHALL be valid.
+
+   14.  Numbers outside the range of IEEE754-2019's binary64 type MUST
+        cause a parse error.
+
+   15.  Numbers MAY have a leading + sign.
+
+   16.  Any whitespace character with the Unicode class Zs SHALL be
+        valid whitespace.
+
+   17.  Duplicate object keys MUST cause a parse error.
+
+   18.  Type extensibility is desired.  If possible, the work done for
+        CBOR tags should be used.  Semantics SHALL be defined for
+        parsing behavior when the receiving entity does not implement a
+        particular type extension.
+
+   19.  There SHALL be a date type that allows encoding at least all of
+        the information from [RFC3339].  See the [Temporal] proposal for
+        other ideas.  If there is a type extensibility approach, the
+        date type SHALL use it.
+
+   20.  The SHALL be a base64 type that allows explicit interchange of
+        binary data.  If there is a type extensibility approach, the
+        base64 type SHALL use it.
+
+   21.  Numbers MAY be written with a single underscore (U+005F: "_")
+        between any numeric digits.  This is usually used to add clarity
+        to long numeric constants.  Example: 86_400
+
+4.  Security Considerations
+
+   Canonicalization and deterministic encoding SHALL NOT be defined for
+   this format.  As such, it SHOULD NOT be used for cryptographic-
+   adjacent protocols that require these features.
+
+5.  IANA Considerations
+
+   This document has no IANA actions.
+
+6.  References
+
+6.1.  Normative References
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/rfc/rfc2119>.
+
+   [RFC3339]  Klyne, G. and C. Newman, "Date and Time on the Internet:
+              Timestamps", RFC 3339, DOI 10.17487/RFC3339, July 2002,
+              <https://www.rfc-editor.org/rfc/rfc3339>.
+
+   [RFC7493]  Bray, T., Ed., "The I-JSON Message Format", RFC 7493,
+              DOI 10.17487/RFC7493, March 2015,
+              <https://www.rfc-editor.org/rfc/rfc7493>.
+
+   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
+
+   [RFC8259]  Bray, T., Ed., "The JavaScript Object Notation (JSON) Data
+              Interchange Format", STD 90, RFC 8259,
+              DOI 10.17487/RFC8259, December 2017,
+              <https://www.rfc-editor.org/rfc/rfc8259>.
+
+6.2.  Informative References
+
+   [Temporal] "ECMAScript Temporal proposal", ECMA TC39, 22 January
+              2024, <https://tc39.es/proposal-temporal/>.
+
+Acknowledgments
+
+   TODO acknowledge.
+
+Author's Address
+
+   Joe Hildebrand
+   Fractional CTO Associates
+   Email: joe-ietf@cursive.net
