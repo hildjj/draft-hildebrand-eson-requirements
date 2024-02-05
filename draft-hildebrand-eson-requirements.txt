@@ -4,8 +4,8 @@
 
 Network Working Group                                      J. Hildebrand
 Internet-Draft                                 Fractional CTO Associates
-Intended status: Standards Track                         22 January 2024
-Expires: 25 July 2024
+Intended status: Standards Track                         5 February 2024
+Expires: 8 August 2024
 
 
          Extended Scripting Object Notation (ESON) Requirements
@@ -45,7 +45,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 25 July 2024.
+   This Internet-Draft will expire on 8 August 2024.
 
 Copyright Notice
 
@@ -168,6 +168,10 @@ Table of Contents
    20.  The SHALL be a base64 type that allows explicit interchange of
         binary data.  If there is a type extensibility approach, the
         base64 type SHALL use it.
+
+   21.  Numbers MAY be written with a single underscore (U+005F: "_")
+        between any numeric digits.  This is usually used to add clarity
+        to long numeric constants.  Example: 86_400
 
 4.  Security Considerations
 
