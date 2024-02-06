@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-04T00:17:45.993535+00:00",
+  "timestamp": "2024-02-06T00:16:04.755453+00:00",
   "repo": "hildjj/draft-hildebrand-eson-requirements",
   "labels": [
     {
@@ -50,5 +50,42 @@
     }
   ],
   "issues": [],
-  "pulls": []
+  "pulls": [
+    {
+      "number": 1,
+      "id": "PR_kwDOLIU_uc5mDJem",
+      "title": "Add numeric separator requirement.",
+      "url": "https://github.com/hildjj/draft-hildebrand-eson-requirements/pull/1",
+      "state": "MERGED",
+      "author": "hildjj",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "See: https://tc39.es/ecma262/#prod-DecimalIntegerLiteral",
+      "createdAt": "2024-02-05T16:57:42Z",
+      "updatedAt": "2024-02-05T22:26:16Z",
+      "baseRepository": "hildjj/draft-hildebrand-eson-requirements",
+      "baseRefName": "main",
+      "baseRefOid": "8aeb875095e3cad36994d9e5acf4136d2c8081ed",
+      "headRepository": "hildjj/draft-hildebrand-eson-requirements",
+      "headRefName": "underscores",
+      "headRefOid": "a79e579a4b34a93eb5adf053e63145b7cafe8d19",
+      "closedAt": "2024-02-05T22:26:16Z",
+      "mergedAt": "2024-02-05T22:26:16Z",
+      "mergedBy": "hildjj",
+      "mergeCommit": {
+        "oid": "816aac4eb1e267f0580fe9b7a13448696fca3a64"
+      },
+      "comments": [
+        {
+          "author": "hildjj",
+          "authorAssociation": "OWNER",
+          "body": "@cabo please review.",
+          "createdAt": "2024-02-05T17:09:44Z",
+          "updatedAt": "2024-02-05T17:09:44Z"
+        }
+      ],
+      "reviews": []
+    }
+  ]
 }
