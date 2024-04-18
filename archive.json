@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-04-16T00:16:08.885357+00:00",
+  "timestamp": "2024-04-18T00:16:39.543482+00:00",
   "repo": "hildjj/draft-hildebrand-eson-requirements",
   "labels": [
     {
@@ -49,7 +49,40 @@
       "color": "ffffff"
     }
   ],
-  "issues": [],
+  "issues": [
+    {
+      "number": 2,
+      "id": "I_kwDOLIU_uc6F5DJ8",
+      "title": "Requirement to specify \"equality\" for duplicate keys",
+      "url": "https://github.com/hildjj/draft-hildebrand-eson-requirements/issues/2",
+      "state": "OPEN",
+      "author": "hildjj",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "In point 17, \"Duplicate object keys\" needs to say that we specify exactly what \"duplicate\" means.  This probably means normalization with one of NFD or NFKC, for example.",
+      "createdAt": "2024-04-16T15:21:08Z",
+      "updatedAt": "2024-04-16T15:21:08Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 3,
+      "id": "I_kwDOLIU_uc6F5D2r",
+      "title": "Add section for prior art",
+      "url": "https://github.com/hildjj/draft-hildebrand-eson-requirements/issues/3",
+      "state": "OPEN",
+      "author": "hildjj",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-04-16T15:22:28Z",
+      "updatedAt": "2024-04-16T15:22:28Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
   "pulls": [
     {
       "number": 1,
