@@ -4,8 +4,8 @@
 
 Network Working Group                                      J. Hildebrand
 Internet-Draft                                 Fractional CTO Associates
-Intended status: Standards Track                         5 February 2024
-Expires: 8 August 2024
+Intended status: Standards Track                            11 July 2024
+Expires: 12 January 2025
 
 
          Extended Scripting Object Notation (ESON) Requirements
@@ -45,7 +45,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 8 August 2024.
+   This Internet-Draft will expire on 12 January 2025.
 
 Copyright Notice
 
